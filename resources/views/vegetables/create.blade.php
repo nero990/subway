@@ -1,4 +1,6 @@
 @extends("layouts.app")
+@section("vegetables_active") active @endsection
+@section("vegetables_new_active") class="active" @endsection
 
 @section("content")
     <div class="forms">

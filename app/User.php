@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function getRoleAttribute() {
         return $this->is_admin ? "Administrator" : "Staff";
     }
+
+    public function mealRegistrations() {
+        return $this->hasMany(MealRegistration::class);
+    }
 }

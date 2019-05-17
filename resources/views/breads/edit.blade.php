@@ -1,4 +1,5 @@
 @extends("layouts.app")
+@section("breads_active") active @endsection
 
 @section("content")
 

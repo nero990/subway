@@ -1,4 +1,6 @@
 @extends("layouts.app")
+@section("users_active") active @endsection
+@section("users_all_active") class="active" @endsection
 
 @section("content")
     <div class="tables">
@@ -25,8 +27,8 @@
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td><span class="label @if($user->is_admin)  {{'label-success'}} @else {{'label-warning'}} @endif">{{$user->role}}</span></td>
-                        <td>{{$user->created_at->format("F m, Y")}}</td>
-                        <td>{{$user->updated_at->format("F m, Y")}}</td>
+                        <td>{{$user->created_at->format("M j, Y")}}</td>
+                        <td>{{$user->updated_at->format("M j, Y")}}</td>
                         <td>
                             <a href="{{route("users.edit", $user->id)}}"><span class="fa fa-edit"></span></a>
                             <a href="{{route("users.destroy", $user->id)}}"><span class="fa fa-remove"></span></a>

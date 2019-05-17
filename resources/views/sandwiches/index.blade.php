@@ -1,4 +1,6 @@
 @extends("layouts.app")
+@section("sandwiches_active") active @endsection
+@section("sandwiches_all_active") class="active" @endsection
 
 @section("content")
     <div class="tables">
@@ -9,7 +11,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
+                        <th>Taste</th>
                         <th>Created At</th>
                         <th>Updated At</th>
                         <th></th>
@@ -21,8 +23,8 @@
                     <tr>
                         <td>{{ (++$key + ($sandwiches->currentPage() - 1) * $sandwiches->perPage()) }}</td>
                         <td>{{$sandwich->taste}}</td>
-                        <td>{{$sandwich->created_at->format("F m, Y")}}</td>
-                        <td>{{$sandwich->updated_at->format("F m, Y")}}</td>
+                        <td>{{$sandwich->created_at->format("M j, Y")}}</td>
+                        <td>{{$sandwich->updated_at->format("M j, Y")}}</td>
                         <td>
                             <a href="{{route("sandwiches.edit", $sandwich->id)}}"><span class="fa fa-edit"></span></a>
                             <a href="{{route("sandwiches.destroy", $sandwich->id)}}"><span class="fa fa-remove"></span></a>

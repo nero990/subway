@@ -102,3 +102,7 @@
         margin-left: auto;
     }
 }
+
+.treeview-menu li.active{
+    font-weight: bold;
+}

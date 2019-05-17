@@ -1,4 +1,6 @@
 @extends("layouts.app")
+@section("sauces_active") active @endsection
+@section("sauces_new_active") class="active" @endsection
 
 @section("content")
     <div class="forms">

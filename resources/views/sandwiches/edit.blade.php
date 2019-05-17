@@ -1,4 +1,5 @@
 @extends("layouts.app")
+@section("sandwiches_active") active @endsection
 
 @section("content")
 

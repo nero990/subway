@@ -17,17 +17,21 @@ class CreateMealRegistrationsTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->bigIncrements('id');
-            $table->string("size",10);
             $table->unsignedBigInteger("user_id");
             $table->unsignedBigInteger("meal_id");
+            $table->unsignedBigInteger("bread_id");
+            $table->string("bread_size",10);
             $table->enum("baked", ["YES", "NO"]);
             $table->unsignedBigInteger("sandwich_id");
             $table->unsignedBigInteger("sauce_id");
-            $table->string("extra", 255);
+            $table->string("extra", 255)->nullable();
             $table->timestamps();
+
+            $table->unique(["user_id", "meal_id"]);
 
             $table->foreign("user_id")->references("id")->on("users");
             $table->foreign("meal_id")->references("id")->on("meals");
+            $table->foreign("bread_id")->references("id")->on("breads");
             $table->foreign("sandwich_id")->references("id")->on("sandwiches");
             $table->foreign("sauce_id")->references("id")->on("sauces");
         });
@@ -51,7 +55,7 @@ class CreateMealRegistrationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meal_registrations');
         Schema::dropIfExists('meal_registration_vegetable');
+        Schema::dropIfExists('meal_registrations');
     }
 }

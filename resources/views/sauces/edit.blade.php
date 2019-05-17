@@ -1,4 +1,5 @@
 @extends("layouts.app")
+@section("sauces_active") active @endsection
 
 @section("content")
 

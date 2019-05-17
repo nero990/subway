@@ -1,4 +1,6 @@
 @extends("layouts.app")
+@section("vegetables_active") active @endsection
+@section("vegetables_all_active") class="active" @endsection
 
 @section("content")
     <div class="tables">
@@ -21,8 +23,8 @@
                     <tr>
                         <td>{{ (++$key + ($vegetables->currentPage() - 1) * $vegetables->perPage()) }}</td>
                         <td>{{$vegetable->name}}</td>
-                        <td>{{$vegetable->created_at->format("F m, Y")}}</td>
-                        <td>{{$vegetable->updated_at->format("F m, Y")}}</td>
+                        <td>{{$vegetable->created_at->format("M j, Y")}}</td>
+                        <td>{{$vegetable->updated_at->format("M j, Y")}}</td>
                         <td>
                             <a href="{{route("vegetables.edit", $vegetable->id)}}"><span class="fa fa-edit"></span></a>
                             <a href="{{route("vegetables.destroy", $vegetable->id)}}"><span class="fa fa-remove"></span></a>

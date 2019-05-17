@@ -1,4 +1,6 @@
 @extends("layouts.app")
+@section("sauces_active") active @endsection
+@section("sauces_all_active") class="active" @endsection
 
 @section("content")
     <div class="tables">
@@ -21,8 +23,8 @@
                     <tr>
                         <td>{{ (++$key + ($sauces->currentPage() - 1) * $sauces->perPage()) }}</td>
                         <td>{{$sauce->name}}</td>
-                        <td>{{$sauce->created_at->format("F m, Y")}}</td>
-                        <td>{{$sauce->updated_at->format("F m, Y")}}</td>
+                        <td>{{$sauce->created_at->format("M j, Y")}}</td>
+                        <td>{{$sauce->updated_at->format("M j, Y")}}</td>
                         <td>
                             <a href="{{route("sauces.edit", $sauce->id)}}"><span class="fa fa-edit"></span></a>
                             <a href="{{route("sauces.destroy", $sauce->id)}}"><span class="fa fa-remove"></span></a>

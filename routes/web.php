@@ -19,6 +19,9 @@ Route::middleware("auth")->group(function () {
     Route::resource("breads", "BreadController");
     Route::resource("sandwiches", "SandwichController");
     Route::resource("vegetables", "VegetableController");
+    Route::resource("meals", "MealController");
+
+    Route::resource("meal-registrations", "MealRegistrationController");
 });
 
 Auth::routes();
