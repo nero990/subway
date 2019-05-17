@@ -55,43 +55,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <div class="profile_details_left"><!--notifications of menu start -->
                 <ul class="nofitications-dropdown">
                     <li class="dropdown head-dpdn">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">4</span></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <div class="notification_header">
-                                    <h3>You have 3 new messages</h3>
-                                </div>
-                            </li>
-                            <li><a href="#">
-                                    <div class="user_img"><img src="images/1.jpg" alt=""></div>
-                                    <div class="notification_desc">
-                                        <p>Lorem ipsum dolor amet</p>
-                                        <p><span>1 hour ago</span></p>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </a></li>
-                            <li class="odd"><a href="#">
-                                    <div class="user_img"><img src="images/4.jpg" alt=""></div>
-                                    <div class="notification_desc">
-                                        <p>Lorem ipsum dolor amet </p>
-                                        <p><span>1 hour ago</span></p>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </a></li>
-                            <li><a href="#">
-                                    <div class="user_img"><img src="images/3.jpg" alt=""></div>
-                                    <div class="notification_desc">
-                                        <p>Lorem ipsum dolor amet </p>
-                                        <p><span>1 hour ago</span></p>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </a></li>
-                            <li>
-                                <div class="notification_bottom">
-                                    <a href="#">See all messages</a>
-                                </div>
-                            </li>
-                        </ul>
+                        <a><i class="fa fa-envelope"></i></a>
                     </li>
 
                 </ul>
@@ -119,9 +83,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             </div>
                         </a>
                         <ul class="dropdown-menu drp-mnu">
-                            <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
-                            <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
-                            <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
                             <li> <a href="{{route("logout")}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
                         </ul>
                     </li>

@@ -37,9 +37,9 @@
                         <td>{{$registration->sauce->name}}</td>
                         <td>{{$registration->created_at->format("M j, Y")}}</td>
                         <td>
-                            <a href=""><i class="fa fa-eye"></i></a>
+                            <a href="{{route("meal-registrations.show", $registration->id)}}"><i class="fa fa-eye"></i></a>
                             @if($registration->meal->status == "OPEN")
-                            <a href=""><i class="fa fa-edit"></i></a>
+                            <a href="{{route("meal-registrations.edit", $registration->id)}}"><i class="fa fa-edit"></i></a>
                             @endif
                         </td>
                     </tr>

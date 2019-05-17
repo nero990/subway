@@ -81,7 +81,6 @@ class MealController extends Controller
      * @param Request $request
      * @param Meal $meal
      * @return void
-     * @throws ValidationException
      */
     public function update(Request $request, Meal $meal)
     {
@@ -110,4 +109,5 @@ class MealController extends Controller
         $meal->delete();
         return redirect()->route("meals.index");
     }
+
 }
