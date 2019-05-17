@@ -85,13 +85,14 @@ class MealController extends Controller
      */
     public function update(Request $request, Meal $meal)
     {
-        $this->validate($request, [
-            "name" => "required|string|unique:meals,name," . $meal->id,
+        $data = $request->validate([
+            "name" => "required|string|unique:meals,name,".$meal->id .",id",
             "status" => "required|string|in:OPEN,CLOSED",
             "eaten_at" => "required|date_format:Y-m-d",
         ]);
 
-        $meal->update($request->all());
+        //$meal->update($request->all());
+        $meal->update($data);
         flash()->success("Success! Meal Record updated.");
 
         return redirect()->route("meals.index");
