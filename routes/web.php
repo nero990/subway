@@ -11,14 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/login');
 
 Route::middleware("auth")->group(function () {
     Route::resource("users", "UserController");
+    Route::resource("sauces", "SauceController");
+    Route::resource("breads", "BreadController");
+    Route::resource("sandwiches", "SandwichController");
+    Route::resource("vegetables", "VegetableController");
 });
-
 
 Auth::routes();
 

@@ -31,25 +31,53 @@
                 </li>
 
                 <li class="treeview">
-                    <a href="index.html">
-                        <i class="fa fa-feed"></i> <span>Sauces</span>
+                    <a href="#">
+                        <i class="fa fa-star"></i>
+                        <span>Sauces</span>
+                        <i class="fa fa-angle-left pull-right"></i>
                     </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route("sauces.index")}}"><i class="fa fa-angle-right"></i> All</a></li>
+                        <li><a href="{{route("sauces.create")}}"><i class="fa fa-angle-right"></i> New</a></li>
+                    </ul>
                 </li>
+
                 <li class="treeview">
-                    <a href="index.html">
-                        <i class="fa fa-feed"></i> <span>Bread</span>
+                    <a href="#">
+                        <i class="fa fa-feed"></i>
+                        <span>Breads</span>
+                        <i class="fa fa-angle-left pull-right"></i>
                     </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route("breads.index")}}"><i class="fa fa-angle-right"></i> All</a></li>
+                        <li><a href="{{route("breads.create")}}"><i class="fa fa-angle-right"></i> New</a></li>
+                    </ul>
                 </li>
+
                 <li class="treeview">
-                    <a href="index.html">
-                        <i class="fa fa-feed"></i> <span>Sandwiches</span>
+                    <a href="#">
+                        <i class="fa fa-bars"></i>
+                        <span>Sandwiches</span>
+                        <i class="fa fa-angle-left pull-right"></i>
                     </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route("sandwiches.index")}}"><i class="fa fa-angle-right"></i> All</a></li>
+                        <li><a href="{{route("sandwiches.create")}}"><i class="fa fa-angle-right"></i> New</a></li>
+                    </ul>
                 </li>
+
                 <li class="treeview">
-                    <a href="index.html">
-                        <i class="fa fa-feed"></i> <span>Vegetables</span>
+                    <a href="#">
+                        <i class="fa fa-bars"></i>
+                        <span>Vegetables</span>
+                        <i class="fa fa-angle-left pull-right"></i>
                     </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route("vegetables.index")}}"><i class="fa fa-angle-right"></i> All</a></li>
+                        <li><a href="{{route("vegetables.create")}}"><i class="fa fa-angle-right"></i> New</a></li>
+                    </ul>
                 </li>
+
                 <li class="treeview">
                     <a href="index.html">
                         <i class="fa fa-feed"></i> <span>Meals</span>

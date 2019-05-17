@@ -119,6 +119,7 @@ class UserController extends Controller
      *
      * @param User $user
      * @return void
+     * @throws \Exception
      */
     public function destroy(User $user)
     {
