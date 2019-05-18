@@ -6,10 +6,23 @@
     <div class="tables">
         <h2 class="title1">Meal Details [{{$meal->name}}]</h2>
         <div class="panel-body widget-shadow">
-            <div>
-                <p>Name: <strong>{{$meal->name}}</strong></p>
-                <p>Status: <strong>{{$meal->status}}</strong></p>
-                <p>Date of Eating: <strong>{{$meal->eaten_at->format('M j Y')}}</strong></p>
+            <div class="show-card">
+                <div class="block">
+                    <label>Meal Name:</label>
+                    <span><strong>{{$meal->name}}</strong></span>
+                </div>
+                <div class="block">
+                    <label>Unique Link:</label>
+                    <span style="font-size: 14px"><a href="{{$meal->unique_link}}" target="_blank">{{$meal->unique_link}}</a></span>
+                </div>
+                <div class="block">
+                    <label>Status:</label>
+                    <span><strong>{{$meal->status}}</strong></span>
+                </div>
+                <div class="block">
+                    <label>Date of Eating:</label>
+                    <span><strong>{{$meal->eaten_at->format('M j Y')}}</strong></span>
+                </div>
             </div>
             @include('flash::message')
             <table class="table table-striped">

@@ -106,3 +106,27 @@
 .treeview-menu li.active{
     font-weight: bold;
 }
+.show-card {
+    padding-bottom: 20px;
+    font-size: 15px;
+}
+.show-card .block {
+    clear: both;
+    margin-bottom: 10px;
+}
+.show-card .block > label{
+    float: left;
+    box-shadow: 2px 2px 5px #ccc;
+    padding: 5px;
+    width: 150px;
+    text-align: right;
+    font-weight: normal;
+}
+
+.show-card .block > span{
+    float: left;
+    box-shadow: 2px 2px 5px #ccc;
+    padding: 5px 10px;
+    margin-left: 20px;
+    width: 400px !important;
+}

@@ -13,6 +13,12 @@
 
 Route::redirect('/', '/login');
 
+Auth::routes();
+Route::get("logout", "Auth\LoginController@logout");
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get("meal-order/{slug}/details", "MealController@details")->name("meal-details");
+
 Route::middleware("auth")->group(function () {
     Route::resource("users", "UserController");
     Route::resource("sauces", "SauceController");
@@ -23,8 +29,3 @@ Route::middleware("auth")->group(function () {
 
     Route::resource("meal-registrations", "MealRegistrationController");
 });
-
-Auth::routes();
-
-Route::get("logout", "Auth\LoginController@logout");
-Route::get('/home', 'HomeController@index')->name('home');

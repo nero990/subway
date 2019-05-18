@@ -17,6 +17,7 @@
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
+                @if(auth()->user())
                 @if(auth()->user()->is_admin)
                 <li class="treeview @yield("users_active")">
                     <a href="#">
@@ -96,6 +97,7 @@
                         <i class="fa fa-shopping-cart"></i> <span>My Meal Order</span>
                     </a>
                 </li>
+                @endif
 
             </ul>
         </div>

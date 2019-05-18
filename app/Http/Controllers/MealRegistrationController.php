@@ -26,6 +26,18 @@ class MealRegistrationController extends Controller
         "sauce_id" => "required|exists:sauces,id",
         "extra" => "nullable|string",
     ];
+
+    /**
+     * MealRegistrationController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware("can:create,App\MealRegistration")->only(["create", "store"]);
+        $this->middleware("can:view,meal_registration")->only("show");
+        $this->middleware("can:update,meal_registration")->only(["edit", "update", "destroy"]);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -47,20 +59,16 @@ class MealRegistrationController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param Request $request
      * @return Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $meal = Meal::open()->first();
+        $meal = $request->get("meal");
         $breads = Bread::all()->pluck("name", 'id');
         $sandwiches = Sandwich::all()->pluck("taste", 'id');
         $vegetables = Vegetable::all()->pluck("name", 'id');
         $sauces = Sauce::all()->pluck("name", 'id');
-
-        if(!$meal) {
-            flash()->error("Cannot register at the moment because there is no open meal. Please try again later");
-            return back();
-        }
 
         return view("meal_registrations.create", compact("meal", "breads", "vegetables", "sauces", "sandwiches"));
     }
@@ -79,14 +87,8 @@ class MealRegistrationController extends Controller
         try{
             DB::beginTransaction();
 
-            if(!$meal = Meal::open()->first()) {
-                throw ValidationException::withMessages([
-                    "meal" => "Cannot register at the moment because there is no open meal. Please try again later"
-                ]);
-            }
-
             $data = $request->all();
-            $data["meal_id"] = $meal->id;
+            $data["meal_id"] = $request->get("meal")->id;
             $meal_registration = auth()->user()->mealRegistrations()->create($data);
             $meal_registration->vegetables()->sync($request->get("vegetables"));
 
@@ -104,59 +106,48 @@ class MealRegistrationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param MealRegistration $meal_registration
+     * @param MealRegistration $mealRegistration
      * @return void
      */
-    public function show(MealRegistration $meal_registration)
+    public function show(MealRegistration $mealRegistration)
     {
-        return view("meal_registrations.show", compact("meal_registration"));
+        return view("meal_registrations.show", compact("mealRegistration"));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param MealRegistration $meal_registration
+     * @param MealRegistration $mealRegistration
      * @return void
      */
-    public function edit(MealRegistration $meal_registration)
+    public function edit(MealRegistration $mealRegistration)
     {
-        if(!$meal_registration->meal->is_open){
-            flash()->error("This meal is no longer open, hence cannot be edited");
-            return back();
-        }
-
         $meal = Meal::open()->first();
         $breads = Bread::all()->pluck("name", 'id');
         $sandwiches = Sandwich::all()->pluck("taste", 'id');
         $vegetables = Vegetable::all()->pluck("name", 'id');
         $sauces = Sauce::all()->pluck("name", 'id');
 
-        return view("meal_registrations.edit", compact("meal_registration", "meal", "breads", "sandwiches", "vegetables", "sauces"));
+        return view("meal_registrations.edit", compact("mealRegistration", "meal", "breads", "sandwiches", "vegetables", "sauces"));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param MealRegistration $meal_registration
+     * @param MealRegistration $mealRegistration
      * @return void
      * @throws ValidationException
      */
-    public function update(Request $request, MealRegistration $meal_registration)
+    public function update(Request $request, MealRegistration $mealRegistration)
     {
         $this->validate($request, $this->rules);
 
         try{
             DB::beginTransaction();
 
-            if(!Meal::open()->exists()) {
-                throw ValidationException::withMessages([
-                    "meal" => "Cannot register at the moment because there is no open meal. Please try again later"
-                ]);
-            }
-
-            $meal_registration->update($request->all());
-            $meal_registration->vegetables()->sync($request->get("vegetables"));
+            $mealRegistration->update($request->all());
+            $mealRegistration->vegetables()->sync($request->get("vegetables"));
 
             flash()->success("Success! You order has been updated");
             DB::commit();
@@ -172,11 +163,13 @@ class MealRegistrationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param MealRegistration $mealRegistration
      * @return Response
+     * @throws Exception
      */
-    public function destroy($id)
+    public function destroy(MealRegistration $mealRegistration)
     {
-        //
+        $mealRegistration->delete();
+        return redirect()->route("meal-registrations.index");
     }
 }

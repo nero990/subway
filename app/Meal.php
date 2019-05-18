@@ -24,7 +24,7 @@ class Meal extends Model
                 $slug = Str::slug($meal->name);
                 if($count > 0) $slug .= "-{$count}";
                 $count++;
-            } while(static::whereSlug($slug)->exists());
+            } while(static::where("slug", $slug)->where("id", "<>", $meal->id)->exists());
 
             $meal->slug = $slug;
         });
@@ -46,6 +46,10 @@ class Meal extends Model
 
     public function getIsOpenAttribute() {
         return $this->attributes["status"] == "OPEN";
+    }
+
+    public function getUniqueLinkAttribute() {
+        return route("meal-details", $this->attributes["slug"]);
     }
 
 

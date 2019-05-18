@@ -71,6 +71,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <ul>
                     <li class="dropdown profile_details_drop">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            @if(auth()->user())
                             <div class="profile_img">
                                 <span class="prfil-img"><img src="images/2.jpg" alt=""> </span>
                                 <div class="user-name">
@@ -81,6 +82,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <i class="fa fa-angle-up lnr"></i>
                                 <div class="clearfix"></div>
                             </div>
+                            @endif
                         </a>
                         <ul class="dropdown-menu drp-mnu">
                             <li> <a href="{{route("logout")}}"><i class="fa fa-sign-out"></i> Logout</a> </li>

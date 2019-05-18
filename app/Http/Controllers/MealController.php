@@ -110,4 +110,13 @@ class MealController extends Controller
         return redirect()->route("meals.index");
     }
 
+    public function details($slug) {
+        $meal = Meal::with([
+            "mealRegistrations", "mealRegistrations.user", "mealRegistrations.sandwich",
+            "mealRegistrations.sauce", "mealRegistrations.vegetables"
+        ])->whereSlug($slug)->firstOrFail();
+
+        return view("meals.show", compact("meal"));
+    }
+
 }
