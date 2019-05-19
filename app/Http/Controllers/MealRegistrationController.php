@@ -69,8 +69,9 @@ class MealRegistrationController extends Controller
         $sandwiches = Sandwich::all()->pluck("taste", 'id');
         $vegetables = Vegetable::all()->pluck("name", 'id');
         $sauces = Sauce::all()->pluck("name", 'id');
+        $mealRegistration = auth()->user()->mealRegistrations()->latest()->first();
 
-        return view("meal_registrations.create", compact("meal", "breads", "vegetables", "sauces", "sandwiches"));
+        return view("meal_registrations.create", compact("mealRegistration", "meal", "breads", "vegetables", "sauces", "sandwiches"));
     }
 
     /**

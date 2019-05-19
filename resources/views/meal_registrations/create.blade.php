@@ -11,7 +11,7 @@
             </div>
             <div class="form-body">
                 @include('errors.list')
-                {!! Form::open(["method" => "POST", "route" => "meal-registrations.store"]) !!}
+                {!! Form::model($mealRegistration, ["method" => "POST", "route" => "meal-registrations.store"]) !!}
                 @include("meal_registrations.partials.form")
                 {!! Form::close() !!}
             </div>
