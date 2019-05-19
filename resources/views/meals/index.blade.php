@@ -1,6 +1,7 @@
 @extends("layouts.app")
 @section("meals_active") active @endsection
 @section("meals_all_active") class="active" @endsection
+@section("styles") <link href="{{asset("css/starability-all.min.css")}}" rel="stylesheet"> @endsection
 
 @section("content")
     <div class="tables">
@@ -15,7 +16,7 @@
                         <th>Status</th>
                         <th>Reg Count</th>
                         <th>Created At</th>
-                        <th>Updated At</th>
+                        <th>Ratings</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -28,7 +29,9 @@
                         <td><span class="label @if($meal->status == "OPEN")  {{"label-success"}} @else {{"label-danger"}} @endif">{{$meal->status}}</span></td>
                         <td>{{$meal->meal_registrations_count}}</td>
                         <td>{{$meal->created_at->format("M j, Y")}}</td>
-                        <td>{{$meal->updated_at->format("M j, Y")}}</td>
+                        <td>
+                            <p class="starability-result" data-rating="{{intval($meal->averageRating)}}" style="font-size: 0.02em"></p>
+                        </td>
                         <td>
                             <a href="{{route("meals.show", $meal->id)}}" title="View Meal Registration"><span class="fa fa-eye"></span></a>
                             <a href="{{route("meals.edit", $meal->id)}}" title="Edit meal"><span class="fa fa-edit"></span></a>

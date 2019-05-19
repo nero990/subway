@@ -5,9 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use willvincent\Rateable\Rateable;
 
 class Meal extends Model
 {
+    use Rateable;
+
     protected $fillable = ["name", "status", "eaten_at"];
 
     protected $dates = ["eaten_at"];

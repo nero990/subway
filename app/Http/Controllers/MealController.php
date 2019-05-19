@@ -7,9 +7,18 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
+use willvincent\Rateable\Rating;
 
 class MealController extends Controller
 {
+    /**
+     * MealController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware("can:rate,meal")->only("rate");
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -117,6 +126,14 @@ class MealController extends Controller
         ])->whereSlug($slug)->firstOrFail();
 
         return view("meals.show", compact("meal"));
+    }
+
+    public function rate(Request $request, Meal $meal) {
+        $rating = new Rating(["rating" => $request->get("rating")]);
+        $rating->user_id = auth()->user()->id;
+        $meal->ratings()->save($rating);
+
+        return back();
     }
 
 }

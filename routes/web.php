@@ -25,6 +25,7 @@ Route::middleware("auth")->group(function () {
     Route::resource("breads", "BreadController");
     Route::resource("sandwiches", "SandwichController");
     Route::resource("vegetables", "VegetableController");
+    Route::post("meals/{meal}/rate", "MealController@rate")->name("meals.rate");
     Route::resource("meals", "MealController");
 
     Route::resource("meal-registrations", "MealRegistrationController");

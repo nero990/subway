@@ -36,6 +36,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <link href="{{asset("css/custom.css")}}" rel="stylesheet">
     <!--//Metis Menu -->
 
+    @yield("styles")
 </head>
 <body class="cbp-spmenu-push">
 <div class="main-content">
@@ -144,6 +145,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{asset("js/bootstrap.js")}}"> </script>
+
+@yield("scripts")
 
 </body>
 </html>

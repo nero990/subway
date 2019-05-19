@@ -112,7 +112,8 @@ class MealRegistrationController extends Controller
      */
     public function show(MealRegistration $mealRegistration)
     {
-        return view("meal_registrations.show", compact("mealRegistration"));
+        $rating = $mealRegistration->meal->ratings()->whereUserId(auth()->user()->id)->first();
+        return view("meal_registrations.show", compact("mealRegistration", "rating"));
     }
 
     /**

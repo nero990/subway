@@ -19,6 +19,8 @@ class User extends Authenticatable
         'name', 'email', 'password', "is_admin"
     ];
 
+    private static $defaultPassword = "password";
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -43,5 +45,13 @@ class User extends Authenticatable
 
     public function mealRegistrations() {
         return $this->hasMany(MealRegistration::class);
+    }
+
+    /**
+     * @return string
+     */
+    public static function getDefaultPassword(): string
+    {
+        return self::$defaultPassword;
     }
 }

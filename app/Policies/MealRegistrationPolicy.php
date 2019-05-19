@@ -6,7 +6,6 @@ use App\Meal;
 use App\User;
 use App\MealRegistration;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use function Sodium\add;
 
 class MealRegistrationPolicy
 {

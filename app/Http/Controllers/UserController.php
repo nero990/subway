@@ -58,10 +58,10 @@ class UserController extends Controller
         ]);
 
         $data = $request->all();
-        $data["password"] = Hash::make("password");
+        $data["password"] = Hash::make(User::getDefaultPassword());
 
         User::create($data);
-        flash()->success("Success! User Record created.");
+        flash()->success("Success! User Record created. Default password is: " . User::getDefaultPassword());
         return redirect()->route("users.index");
     }
 
